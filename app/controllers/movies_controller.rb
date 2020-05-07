@@ -18,6 +18,8 @@ class MoviesController < ApplicationController
 
   def create
     @movie = current_user.movies.build(movie_params)
+    # @movie.image.url = param[:image.url]
+    
 
     respond_to do |format|
       if @movie.save
@@ -58,6 +60,6 @@ class MoviesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def movie_params
-      params.require(:movie).permit(:title, :description, :movie_length, :director, :rating)
+      params.require(:movie).permit(:title, :description, :movie_length, :director, :rating, :image)
     end
 end
